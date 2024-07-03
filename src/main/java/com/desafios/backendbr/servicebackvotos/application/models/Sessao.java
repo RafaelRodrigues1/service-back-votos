@@ -6,5 +6,5 @@ import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.UUID;
 
-public record Sessao(UUID id, Pauta pauta, Set<Voto> votos, LocalDateTime abertura, LocalDateTime fechamento, StatusSessao status, MotivoInvalidacao motivoInvalidacao) {
+public record Sessao(UUID id, Pauta pauta, Set<Voto> votos, LocalDateTime abertura, LocalDateTime encerramento, StatusSessao status, MotivoInvalidacao motivoInvalidacao) {
 }
