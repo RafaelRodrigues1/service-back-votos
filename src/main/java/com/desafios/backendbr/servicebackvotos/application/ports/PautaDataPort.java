@@ -10,4 +10,6 @@ public interface PautaDataPort {
     void cadastrarPauta(Pauta pauta);
 
     Set<Pauta> listarPautas(Integer qtdePorPagina, Integer pagina);
+
+    Pauta buscarPorId(UUID id);
 }

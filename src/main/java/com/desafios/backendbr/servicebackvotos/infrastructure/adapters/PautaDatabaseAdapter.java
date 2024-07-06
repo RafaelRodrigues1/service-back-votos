@@ -36,4 +36,9 @@ public class PautaDatabaseAdapter implements PautaDataPort {
         var pautaEntitySet = pautaRepository.findAll(Pageable.ofSize(qtdePorPaginaBusca).withPage(paginaBusca)).toSet();
         return pautaEntitySet.stream().map(PautaEntityMapper.INSTANCE::toModel).collect(Collectors.toSet());
     }
+
+    @Override
+    public Pauta buscarPorId(UUID id) {
+        return PautaEntityMapper.INSTANCE.toModel(pautaRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Pauta de id " + id + " não encontrada")));
+    }
 }

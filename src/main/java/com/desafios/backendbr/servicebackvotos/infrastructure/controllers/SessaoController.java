@@ -1,5 +1,7 @@
 package com.desafios.backendbr.servicebackvotos.infrastructure.controllers;
 
+import com.desafios.backendbr.servicebackvotos.application.usecases.AbrirSessaoUseCase;
+import com.desafios.backendbr.servicebackvotos.infrastructure.controllers.dtos.mappers.SessaoMapper;
 import com.desafios.backendbr.servicebackvotos.infrastructure.controllers.dtos.requests.AbrirSessaoRequest;
 import com.desafios.backendbr.servicebackvotos.infrastructure.controllers.dtos.requests.ReceberVotoRequest;
 import com.desafios.backendbr.servicebackvotos.infrastructure.controllers.dtos.responses.SessaoResponse;
@@ -13,10 +15,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("sessao")
 public class SessaoController {
 
+    private final AbrirSessaoUseCase abrirSessaoUseCase;
+
+    public SessaoController(AbrirSessaoUseCase abrirSessaoUseCase) {
+        this.abrirSessaoUseCase = abrirSessaoUseCase;
+    }
+
     @PostMapping
     public ResponseEntity<SessaoResponse> abrirSessao(@RequestBody AbrirSessaoRequest abrirSessaoRequest) {
-
-        return ResponseEntity.ok(null);
+        var sessaoAberta = abrirSessaoUseCase.executar(SessaoMapper.INSTANCE.toModel(abrirSessaoRequest), abrirSessaoRequest.duracao());
+        return ResponseEntity.ok(SessaoMapper.INSTANCE.toResponse(sessaoAberta));
     }
 
     @PostMapping("votar")
