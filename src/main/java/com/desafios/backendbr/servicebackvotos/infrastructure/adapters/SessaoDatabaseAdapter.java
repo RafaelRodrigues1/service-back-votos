@@ -8,6 +8,8 @@ import com.desafios.backendbr.servicebackvotos.infrastructure.repositories.entit
 import com.desafios.backendbr.servicebackvotos.infrastructure.repositories.entities.mappers.SessaoEntityMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public class SessaoDatabaseAdapter implements SessaoDataPort {
 
@@ -26,5 +28,10 @@ public class SessaoDatabaseAdapter implements SessaoDataPort {
         var pautaEntity = PautaEntityMapper.INSTANCE.toEntity(pautaDataPort.buscarPorId(sessaoEntity.getPauta().getId()));
         sessaoEntitySalva.setPauta(pautaEntity);
         return SessaoEntityMapper.INSTANCE.toModel(sessaoEntitySalva);
+    }
+
+    @Override
+    public Sessao buscaSessaoPelaPauta(UUID idPauta) {
+        return SessaoEntityMapper.INSTANCE.toModel(sessaoRepository.findByPauta(idPauta));
     }
 }
