@@ -3,18 +3,16 @@ package com.desafios.backendbr.servicebackvotos.infrastructure.adapters;
 import com.desafios.backendbr.servicebackvotos.application.models.Sessao;
 import com.desafios.backendbr.servicebackvotos.application.models.enums.StatusSessao;
 import com.desafios.backendbr.servicebackvotos.application.ports.ValidadorAberturaSessaoPort;
-import com.desafios.backendbr.servicebackvotos.application.usecases.AberturaSessaoException;
+import com.desafios.backendbr.servicebackvotos.application.usecases.exceptions.AberturaSessaoException;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ValidadorAberturaStatusSessaoAdapter implements ValidadorAberturaSessaoPort {
 
     private static final String MENSAGEM_ERRO_ABERTURA_SESSAO_STATUS_ABERTA = """
-            Não foi possivel abrir sessão, pois já existe sessão aberta para votação da mesma pauta
-            """;
+            Não foi possivel abrir sessão, pois já existe sessão aberta para votação da mesma pauta""";
     private static final String MENSAGEM_ERRO_ABERTURA_SESSAO_STATUS_FECHADA = """
-            Não foi possivel abrir sessão, pois a sessão referente a está pauta já foi votada e está encerrada
-            """;
+            Não foi possivel abrir sessão, pois a sessão referente a está pauta já foi votada e está encerrada""";
 
     @Override
     public void validar(Sessao sessao) {
