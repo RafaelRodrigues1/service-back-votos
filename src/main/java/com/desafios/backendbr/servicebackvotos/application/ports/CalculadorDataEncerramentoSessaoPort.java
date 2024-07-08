@@ -1,4 +1,4 @@
-package com.desafios.backendbr.servicebackvotos.application.usecases;
+package com.desafios.backendbr.servicebackvotos.application.ports;
 
 import java.time.LocalDateTime;
 

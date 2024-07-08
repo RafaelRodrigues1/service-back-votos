@@ -1,6 +1,6 @@
 package com.desafios.backendbr.servicebackvotos.infrastructure.adapters;
 
-import com.desafios.backendbr.servicebackvotos.application.usecases.CalculadorDataEncerramentoSessaoPort;
+import com.desafios.backendbr.servicebackvotos.application.ports.CalculadorDataEncerramentoSessaoPort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;

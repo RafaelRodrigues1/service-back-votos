@@ -2,6 +2,7 @@ package com.desafios.backendbr.servicebackvotos.application.usecases;
 
 import com.desafios.backendbr.servicebackvotos.application.models.Sessao;
 import com.desafios.backendbr.servicebackvotos.application.models.enums.StatusSessao;
+import com.desafios.backendbr.servicebackvotos.application.ports.CalculadorDataEncerramentoSessaoPort;
 import com.desafios.backendbr.servicebackvotos.application.ports.SessaoDataPort;
 import com.desafios.backendbr.servicebackvotos.application.ports.ValidadorAberturaSessaoPort;
 import org.springframework.stereotype.Service;
